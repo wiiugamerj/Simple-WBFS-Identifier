@@ -1,0 +1,453 @@
+[gd_scene load_steps=33 format=3 uid="uid://bfaqv6dxo1ksn"]
+
+[ext_resource type="Script" path="res://GameList.gd" id="1_fadjw"]
+[ext_resource type="Script" path="res://addons/SmoothScroll/SmoothScrollContainer.gd" id="2_chsax"]
+[ext_resource type="Texture2D" uid="uid://bdjvs7vlso1rv" path="res://Icon2 shadow.png" id="3_4ekef"]
+[ext_resource type="Script" path="res://Icon hover.gd" id="3_motlt"]
+[ext_resource type="FontFile" uid="uid://bm5aw3oomxwba" path="res://fonts/SF Pro - Semibold.otf" id="4_liql2"]
+[ext_resource type="Script" path="res://ButtonHover.gd" id="4_m2ql6"]
+[ext_resource type="Texture2D" uid="uid://xvwn7il7yqvf" path="res://Container.png" id="4_ta4s0"]
+[ext_resource type="Script" path="res://LabelIgnore.gd" id="6_2yguq"]
+[ext_resource type="FontFile" uid="uid://c1pyuuxlo30gl" path="res://fonts/SF-Pro-Text-Regular.otf" id="6_dupph"]
+[ext_resource type="Texture2D" uid="uid://buch2gdve6c86" path="res://Icon2.png" id="7_njvd5"]
+[ext_resource type="PackedScene" uid="uid://d3mhnudjdb1w1" path="res://Credits.tscn" id="9_47hq7"]
+
+[sub_resource type="Animation" id="Animation_h7r02"]
+resource_name = "Hover"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon/Icon hover:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2jfbq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon/Icon hover:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mg37p"]
+_data = {
+"Hover": SubResource("Animation_h7r02"),
+"RESET": SubResource("Animation_2jfbq")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_2sycg"]
+font = ExtResource("4_liql2")
+font_size = 40
+font_color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mw35m"]
+bg_color = Color(0.870588, 0.870588, 0.870588, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_luei0"]
+bg_color = Color(0.811765, 0.811765, 0.811765, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+
+[sub_resource type="Theme" id="Theme_rfob1"]
+LineEdit/styles/focus = SubResource("StyleBoxFlat_mw35m")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_luei0")
+
+[sub_resource type="LabelSettings" id="LabelSettings_i6tl1"]
+font = ExtResource("6_dupph")
+font_size = 22
+font_color = Color(0.137255, 0.137255, 0.137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_haoec"]
+bg_color = Color(0.647059, 0.647059, 0.647059, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2iov"]
+bg_color = Color(0.890196, 0.890196, 0.890196, 1)
+
+[sub_resource type="Theme" id="Theme_4p8rf"]
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_haoec")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_v2iov")
+
+[sub_resource type="LabelSettings" id="LabelSettings_s6t8q"]
+font = ExtResource("6_dupph")
+font_size = 38
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_sviv2"]
+resource_name = "Hover"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.882353, 0.882353, 0.882353, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_stiw6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qvi7f"]
+_data = {
+"Hover": SubResource("Animation_sviv2"),
+"RESET": SubResource("Animation_stiw6")
+}
+
+[sub_resource type="Animation" id="Animation_g0ap5"]
+resource_name = "UpdateListAnimation"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sejx5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_blp5l"]
+_data = {
+"RESET": SubResource("Animation_sejx5"),
+"UpdateListAnimation": SubResource("Animation_g0ap5")
+}
+
+[sub_resource type="Animation" id="Animation_ilh28"]
+resource_name = "Start"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ij51n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_71kjt"]
+_data = {
+"RESET": SubResource("Animation_ij51n"),
+"Start": SubResource("Animation_ilh28")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fadjw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -271.5
+offset_top = 22.0
+offset_right = 271.5
+offset_bottom = 82.0
+grow_horizontal = 2
+theme_override_constants/separation = 30
+
+[node name="Icon" type="TextureButton" parent="Title"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture_normal = ExtResource("7_njvd5")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_motlt")
+
+[node name="Icon" type="TextureButton" parent="Title/Icon"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 60.0
+pivot_offset = Vector2(30, 30)
+mouse_filter = 2
+texture_normal = ExtResource("7_njvd5")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Icon hover" type="TextureButton" parent="Title/Icon/Icon"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.252, 1.252)
+pivot_offset = Vector2(30, 30)
+mouse_filter = 2
+texture_normal = ExtResource("3_4ekef")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Hover" type="AnimationPlayer" parent="Title/Icon"]
+libraries = {
+"": SubResource("AnimationLibrary_mg37p")
+}
+
+[node name="Label" type="Label" parent="Title"]
+layout_mode = 2
+text = "|    Simple WBFS identifier"
+label_settings = SubResource("LabelSettings_2sycg")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -102.5
+offset_top = 87.0
+offset_right = 102.5
+offset_bottom = 118.0
+grow_horizontal = 2
+theme = SubResource("Theme_rfob1")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_uneditable_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.27451, 0.27451, 0.27451, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/clear_button_color = Color(0, 0, 0, 1)
+theme_override_colors/clear_button_color_pressed = Color(0, 0, 0, 1)
+placeholder_text = "Enter USB path..."
+alignment = 1
+expand_to_text_length = true
+caret_blink = true
+caret_blink_interval = 0.55
+
+[node name="Game count" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -356.5
+offset_top = 129.0
+offset_right = 356.5
+offset_bottom = 163.0
+grow_horizontal = 2
+mouse_filter = 1
+text = "Drag your USB's WBFS folder path (for ex. D:/wbfs)"
+label_settings = SubResource("LabelSettings_i6tl1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SmoothScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -513.0
+offset_top = -478.0
+offset_right = 1599.0
+offset_bottom = 448.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.484, 0.484)
+theme = SubResource("Theme_4p8rf")
+script = ExtResource("2_chsax")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SmoothScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="Button" type="TextureButton" parent="SmoothScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 1
+texture_normal = ExtResource("4_ta4s0")
+stretch_mode = 3
+script = ExtResource("4_m2ql6")
+
+[node name="Label" type="Label" parent="SmoothScrollContainer/VBoxContainer/Button"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 14.0
+offset_right = 2021.0
+offset_bottom = 67.0
+mouse_filter = 1
+text = "Label
+"
+label_settings = SubResource("LabelSettings_s6t8q")
+vertical_alignment = 1
+script = ExtResource("6_2yguq")
+
+[node name="Hover" type="AnimationPlayer" parent="SmoothScrollContainer/VBoxContainer/Button"]
+libraries = {
+"": SubResource("AnimationLibrary_qvi7f")
+}
+
+[node name="UpdateListAnimation" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="UpdateListAnimator" type="AnimationPlayer" parent="UpdateListAnimation"]
+libraries = {
+"": SubResource("AnimationLibrary_blp5l")
+}
+
+[node name="StartAnimation" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StartAnimation"]
+libraries = {
+"": SubResource("AnimationLibrary_71kjt")
+}
+
+[node name="Window" type="Window" parent="."]
+initial_position = 2
+title = "Credits"
+size = Vector2i(421, 355)
+visible = false
+unresizable = true
+
+[node name="Control" parent="Window" instance=ExtResource("9_47hq7")]
+offset_right = 0.0
+offset_bottom = 0.0
+
+[connection signal="mouse_entered" from="Title/Icon" to="Title/Icon" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Title/Icon" to="Title/Icon" method="_on_mouse_exited"]
+[connection signal="pressed" from="Title/Icon" to="." method="_on_wgj_black_pressed"]
+[connection signal="pressed" from="Title/Icon/Icon" to="." method="_on_wgj_black_pressed"]
+[connection signal="pressed" from="Title/Icon/Icon/Icon hover" to="." method="_on_wgj_black_pressed"]
+[connection signal="text_changed" from="LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="mouse_entered" from="SmoothScrollContainer/VBoxContainer/Button" to="SmoothScrollContainer/VBoxContainer/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="SmoothScrollContainer/VBoxContainer/Button" to="SmoothScrollContainer/VBoxContainer/Button" method="_on_mouse_exited"]
+[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]

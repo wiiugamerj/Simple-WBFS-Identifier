@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dgj0c2fw0ci7n"]
+
+[ext_resource type="FontFile" uid="uid://c1pyuuxlo30gl" path="res://fonts/SF-Pro-Text-Regular.otf" id="1_nqsun"]
+
+[resource]
+line_spacing = 6.0
+font = ExtResource("1_nqsun")
+font_size = 20
+font_color = Color(0.14902, 0.14902, 0.14902, 1)
